@@ -22,12 +22,31 @@
 
 ---
 
-### 🎥 데모 영상
+### 🎥 Preview
 
 <table>
+   <tr>
+      <th>1. 시계열 차트 만들기</th>
+   </tr>
   <tr>
     <td>
-      <img src="https://github.com/hnoch/wanted-pre-onboarding-frontend-4/assets/53362953/3d080634-682a-48d9-8b89-832f3e972d20" width="700" height="500"/>
+      <img src="https://github.com/hnoch/wanted-pre-onboarding-frontend-4/assets/53362953/886e54cd-c04b-484c-8ea9-c277579ef9de" width="600" height="400"/>
+    </td>
+  </tr>
+   <tr>
+      <th>2. 호버 기능 구현</th>
+   </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/hnoch/wanted-pre-onboarding-frontend-4/assets/53362953/09c8fccc-8c3f-4b40-8cbc-733edde9f0a3" width="600" height="400"/>
+    </td>
+  </tr>
+   <tr>
+      <th>3. 필터링 기능 구현</th>
+   </tr>
+  <tr>
+    <td>
+       <img src="https://github.com/hnoch/wanted-pre-onboarding-frontend-4/assets/53362953/6ad43eee-29b3-47c6-8b3c-d9689b6842ba" width="600" height="400"/>
     </td>
   </tr>
 </table>
