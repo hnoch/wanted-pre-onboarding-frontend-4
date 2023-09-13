@@ -13,7 +13,8 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
   const [chartFilter, setChartFilter] = useState('해제')
 
   const changeChartFilter = (text: string) => {
-    setChartFilter(text)
+    // NOTE 같은 항목 선택 시 디폴트 설정
+    setChartFilter(chartFilter === text ? '해제' : text)
   }
 
   return (
