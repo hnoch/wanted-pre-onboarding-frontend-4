@@ -16,7 +16,7 @@ const Chart = () => {
       <Cmn.H1>지역별 분포 차트</Cmn.H1>
 
       {chartData.length === 0 ? (
-        <div>차트정보가 없습니다.</div>
+        <Cmn.LoadingBox>차트정보를 불러오고 있습니다...</Cmn.LoadingBox>
       ) : (
         <Charts.Wrap>
           <ChartFilter selected={filter.chartFilter} selectedChange={filter.changeChartFilter} />

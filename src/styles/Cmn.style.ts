@@ -15,3 +15,9 @@ export const Container = styled.div`
 export const H1 = styled.h1`
   text-align: center;
 `
+
+export const LoadingBox = styled.div`
+  font-size: 18px;
+  padding: 50px 0px;
+  text-align: center;
+`
