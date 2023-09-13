@@ -1,6 +1,7 @@
 import { Area, Bar, Cell, ComposedChart, Label, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 import { MockData } from '../types/mock'
 import { RANGE_AREA, RANGE_BAR } from '../constants/constant'
+import CustomizedTooltip from './CustomizedTooltip'
 
 type PropsType = {
   data: MockData[]
@@ -17,7 +18,7 @@ const ChartList = ({ data, selected }: PropsType) => {
       <YAxis dataKey={'value_bar'} orientation="right" domain={RANGE_BAR}>
         <Label value="bar" offset={0} angle={-90} position="insideRight" />
       </YAxis>
-      <Tooltip />
+      <Tooltip content={<CustomizedTooltip />} />
       <Legend />
       <Bar dataKey={'value_bar'} barSize={20} stroke="#FFF" fill="#9ea1ff">
         {data.map((entry, idx) => {
