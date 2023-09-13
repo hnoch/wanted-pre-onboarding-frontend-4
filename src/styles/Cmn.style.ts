@@ -9,7 +9,7 @@ export const Layout = styled.div`
 `
 
 export const Container = styled.div`
-  padding: 80px 0px;
+  padding: 30px 0px;
 `
 
 export const H1 = styled.h1`
