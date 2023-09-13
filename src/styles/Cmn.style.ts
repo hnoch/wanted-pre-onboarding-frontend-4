@@ -18,6 +18,8 @@ export const H1 = styled.h1`
 
 export const LoadingBox = styled.div`
   font-size: 18px;
-  padding: 50px 0px;
-  text-align: center;
+  padding: 80px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
