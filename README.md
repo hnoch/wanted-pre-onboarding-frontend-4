@@ -35,7 +35,7 @@
 
 
 ### 📃 배포 사이트
-[배포 사이트로 이동하기](https://wanted-pre-onboarding-frontend-chi-ten.vercel.app/)
+[배포 사이트로 이동하기](https://wanted-pre-onboarding-frontend-4-psi.vercel.app/)
 
 ***
 
