@@ -21,16 +21,119 @@
     - 필터링 시 버튼에서 선택한 ID값과 동일한 ID값을 가진 데이터 구역만 하이라이트 처리를 해주세요
     - 특정 데이터 구역을 클릭 시에도 필터링 기능과 동일한 형태로 동일한 ID값을 가진 데이터 구역을 하이라이트해주세요
 
+***
+
+### 🎥 데모 영상
+
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/hnoch/wanted-pre-onboarding-frontend-4/assets/53362953/3d080634-682a-48d9-8b89-832f3e972d20" width="700" height="500"/>
+    </td>
+  </tr>
+</table>
+
+
+### 📃 배포 사이트
+[배포 사이트로 이동하기](https://wanted-pre-onboarding-frontend-chi-ten.vercel.app/)
+
+***
 
 ### 🏃🏻‍♂️ 프로젝트의 실행 방법
 
 #### ENV
   - Node v20.5.0
   - npm v8.19.1
+
 #### Frontend
-  - `npm install & npm start`
+   1. 해당 레포지토리를 클론합니다.
+      ```bash
+         git clone [레포지토리 주소]
+      ```
+
+   2. npm을 통한 패키지의 의존성을 설치합니다.
+      ```bash
+         npm install
+      ```
+   3. 프로젝트를 실행합니다.
+      ```bash
+         npm run dev
+      ```
 
 
+### 🛠️ 기술 구현
+
+#### json 파일
+   - 요구사항에서의 json 파일을 프로젝트 로컬에 저장하고 임포트하여 별도의 서버구현 없이 사용했습니다.
+
+### hooks
+   - json 파일을 통해 새로운 배열을 만들어서 훅으로 사용했습니다.
+      ```typescript
+         export const useGetMock = () => {
+              const mockKeys = Object.keys(mock.response)
+              const mockValues = Object.values(mock.response)
+            
+              const [chartData, setChartData] = useState<MockData[]>([])
+            
+              useEffect(() => {
+                setChartData([])
+            
+                mockValues.map((item, idx) => {
+                  setChartData(chartList => [
+                    ...chartList,
+                    {
+                      time: mockKeys[idx].split(' ')[1],
+                      id: item.id,
+                      value_area: item.value_area,
+                      value_bar: item.value_bar,
+                    },
+                  ])
+                })
+              }, [])
+            
+              return { chartData }
+            }
+      ```
+     
+
+#### Context API
+   - 선택된 필터값을 전역으로 설정해 사용할 수 있도록 했습니다.
+     ```typescript
+        import { createContext, useContext, useState } from 'react'
+
+         interface IFilter {
+           chartFilter: string
+           changeChartFilter: (text: string) => void
+         }
+         
+         const FilterContext = createContext<IFilter>({ chartFilter: '해제', changeChartFilter: () => {} })
+         
+         export const useFilter = () => useContext(FilterContext)
+         
+         export function FilterProvider({ children }: { children: React.ReactNode }) {
+           const [chartFilter, setChartFilter] = useState('해제')
+         
+           const changeChartFilter = (text: string) => {
+             // NOTE 같은 항목 선택 시 디폴트 설정
+             setChartFilter(chartFilter === text ? '해제' : text)
+           }
+         
+           return (
+             <FilterContext.Provider value={{ chartFilter, changeChartFilter }}>
+               {children}
+             </FilterContext.Provider>
+           )
+         }
+
+     ```
+
+
+#### Recharts [공식문서](https://recharts.org/en-US)
+  - 사용과 커스텀이 쉽습니다.
+  - 간단한 애니메이션 기능이 있습니다.
+  - 요구사항의 기능구현을 위해 적합한 라이브러리라고 판단하여 사용했습니다.
+
+***
 
 ### 📚 프로젝트 스택
 
@@ -38,28 +141,10 @@
    <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">  
    <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
    <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=styledcomponents&logoColor=white">
+   <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=styledcomponents&logoColor=white">
+   <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=styledcomponents&logoColor=white">
+   <img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=styledcomponents&logoColor=white">
 </div>
-
-
-- Recharts [공식문서](https://recharts.org/en-US)
-  - 사용과 커스텀이 쉽습니다.
-  - 간단한 애니메이션 기능이 있습니다.
-  - 요구사항의 기능구현을 위해 적합한 라이브러리라고 판단하여 사용했습니다.
-
-
-### 🎥 데모 영상
-
-<table>
-  <tr>
-    <td>
-      <img src="https://github.com/hnoch/wanted-pre-onboarding-frontend-4/assets/53362953/3d080634-682a-48d9-8b89-832f3e972d20" width="800" height="600"/>
-    </td>
-  </tr>
-</table>
-
-
-### 📃 배포 사이트
-[배포사이트](https://wanted-pre-onboarding-frontend-chi-ten.vercel.app/)
 
 
 ### 🌳 디렉토리
